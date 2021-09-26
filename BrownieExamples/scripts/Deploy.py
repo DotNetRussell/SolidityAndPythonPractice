@@ -17,8 +17,20 @@
 #
 # delete browning account
 # ~brownie account delete freecodecamp-account
+#
+# list all of the known brownie networks (development get built and tore down each brownie instance)
+# ~brownie networks list
+#
+from brownie import accounts, config, SimpleStorage, network
 
-from brownie import accounts, config, SimpleStorage
+
+def get_account():
+
+    if network.show_active() == "development":
+        # get brownie auto generated account (it gens 10 this gets index 0)
+        return accounts[0]
+    else:
+        return accounts.add(config["wallets"]["from_key"])
 
 
 def deploy_simple_storage(account):
@@ -48,8 +60,6 @@ def storeValueAndRetrieveValue(simple_storage, account):
 
 
 def main():
-    # get brownie auto generated account (it gens 10 this gets index 0)
-    account = accounts[0]
-
+    account = get_account()
     storage_contract = deploy_simple_storage(account)
     storeValueAndRetrieveValue(storage_contract, account)
