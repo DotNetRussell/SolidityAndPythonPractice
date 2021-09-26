@@ -20,13 +20,9 @@
 
 from brownie import accounts
 
-deployment_address = "0xA653b2825f56C01E02556291f826b0d039A00f4e"
-# sorry moon boi's this isn't a live private key, just local testnet - gl on your github scraping
-private_key = "0x45800fc611b16547f7f58969a353fab525a5476149c4c24f3b693b066b05e50c"
-
 
 def deploy_simple_storage():
-    account = accounts[0]
+    account = accounts.load("freecodecamp-account")
     print(account)
 
 
