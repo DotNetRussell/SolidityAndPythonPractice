@@ -18,13 +18,38 @@
 # delete browning account
 # ~brownie account delete freecodecamp-account
 
-from brownie import accounts
+from brownie import accounts, config, SimpleStorage
 
 
-def deploy_simple_storage():
-    account = accounts.load("freecodecamp-account")
-    print(account)
+def deploy_simple_storage(account):
+
+    # this retrieves the account setup at commandline
+    # account = accounts.load("freecodecamp-account")
+
+    # this setups an account from a private key stored in an environment variable named PRIVATE_KEY in the .env file
+    # account = accounts.add(os.getenv("PRIVATE_KEY"))
+
+    # getting the same private key as above but from the config instead of the os env var
+    # account = accounts.add(config["wallets"]["from_key"])
+
+    # this gets the simple storage contract and deploys it from the account assigned above
+    simple_storage = SimpleStorage.deploy({"from": account})
+    return simple_storage
+
+
+def storeValueAndRetrieveValue(simple_storage, account):
+    # brownie is smart enough to know if it's a transaction or a callv
+    stored_value = simple_storage.retrieve()
+    print("Stored Value: " + str(stored_value))
+    transaction = simple_storage.store(20, {"from": account})
+    transaction.wait(1)
+    stored_value = simple_storage.retrieve()
+    print("Updated Stored Value: " + str(stored_value))
 
 
 def main():
-    deploy_simple_storage()
+    # get brownie auto generated account (it gens 10 this gets index 0)
+    account = accounts[0]
+
+    storage_contract = deploy_simple_storage(account)
+    storeValueAndRetrieveValue(storage_contract, account)
