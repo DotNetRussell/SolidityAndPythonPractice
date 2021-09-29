@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@chainlink/contracts/src/v0.6/VRFConsumerBase.sol";
 
 contract Lottery is VRFConsumerBase, Ownable {
-    address payable recentWinner;
+    address payable public recentWinner;
     address payable[] public players;
     uint256 public usdEntryFee;
     uint256 _randomness;
@@ -22,6 +22,9 @@ contract Lottery is VRFConsumerBase, Ownable {
 
     uint256 public _fee;
     bytes32 public _keyhash;
+
+    event RequestedRandomness(bytes32 requestId);
+
 
     constructor(
         address priceFeedAddress,
@@ -39,11 +42,11 @@ contract Lottery is VRFConsumerBase, Ownable {
 
     function enter() public payable {
         require(lottery_state == LOTTERY_STATE.OPEN, "Lottery isn't open yet");
-        require(msg.value >= getEnteranceFee(), "Not enough ETH");
+        require(msg.value >= getEntranceFee(), "Not enough ETH");
         players.push(msg.sender);
     }
 
-    function getEnteranceFee() public view returns (uint256) {
+    function getEntranceFee() public view returns (uint256) {
         (, int256 price, , , ) = ethUsdPriceFeed.latestRoundData();
         uint256 adjustedPrice = uint256(price) * 10**10;
         uint256 costToEnter = (usdEntryFee * 10**18) / adjustedPrice;
@@ -61,6 +64,7 @@ contract Lottery is VRFConsumerBase, Ownable {
     function endLottery() public onlyOwner {
         lottery_state = LOTTERY_STATE.CALCULATING_WINNER;
         bytes32 requestId = requestRandomness(_keyhash, _fee);
+        emit RequestedRandomness(requestId);
     }
 
     function fulfillRandomness(bytes32 requestId, uint256 randomness)
