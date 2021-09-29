@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="353ee862-9910-4bdc-aff5-fbfa6ccf13da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/contracts/test/LinkToken.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contracts/test/VRFCoordinator.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/interfaces/LinkTokenInterface.sol" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_lottery_integration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/brownie-config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/brownie-config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/Lottery.sol" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/Lottery.sol" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_lottery.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_lottery_unit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/helpfulscripts.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/helpfulscripts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_lottery_integration.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_lottery_integration.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

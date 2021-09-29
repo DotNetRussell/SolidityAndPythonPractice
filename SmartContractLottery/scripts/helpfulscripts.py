@@ -12,9 +12,9 @@ contract_to_mock = {
 
 
 def getAccount(index=None, id=None):
-    if index != None:
+    if index is not None:
         return accounts[index]
-    elif id != None:
+    elif id is not None:
         return accounts.load(id)
     elif (
         network.show_active() in LOCAL_BLOCKCHAIN_ENVIRONMENTS
@@ -29,6 +29,7 @@ def getAccount(index=None, id=None):
 
 
 def getContract(contractName):
+    print(f"Fetching contract {contractName}")
     contractType = contract_to_mock[str(contractName)]
     if network.show_active() in LOCAL_BLOCKCHAIN_ENVIRONMENTS:
         if len(contractType) <= 0:
