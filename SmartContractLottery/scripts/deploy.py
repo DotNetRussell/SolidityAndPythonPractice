@@ -4,7 +4,7 @@ from scripts import helpfulscripts
 import time
 
 def deployLotto():
-    account = helpfulscripts.getAccount()
+    account = helpfulscripts.getAccount(id="freecodecamp-account")
 
     # address priceFeedAddress,
     # address vrfCoordinator,
@@ -26,7 +26,7 @@ def deployLotto():
 
 
 def startLotto():
-    account = helpfulscripts.getAccount()
+    account = helpfulscripts.getAccount(id="freecodecamp-account")
     lottery = Lottery[-1]
     starting_tx = lottery.startLottery({"from": account})
     starting_tx.wait(1)
@@ -34,7 +34,7 @@ def startLotto():
 
 
 def enterLotto():
-    account = helpfulscripts.getAccount()
+    account = helpfulscripts.getAccount(id="freecodecamp-account")
     lottery = Lottery[-1]
     value = lottery.getEntranceFee() + 1000000000
     tx = lottery.enter({"from": account, "value": value})
@@ -43,7 +43,7 @@ def enterLotto():
 
 
 def endLotto():
-    account = helpfulscripts.getAccount()
+    account = helpfulscripts.getAccount(id="freecodecamp-account")
     lottery = Lottery[-1]
     fundtx = helpfulscripts.fundWithLink(lottery.address)
     fundtx.wait(1)

@@ -1,3 +1,5 @@
+dotenv: .env
+
 dependencies:
   # - <organization/repo>@<version>
   - smartcontractkit/chainlink-brownie-contracts@0.2.2
@@ -9,7 +11,6 @@ compiler:
       - '@chainlink=smartcontractkit/chainlink-brownie-contracts@0.2.2'
       - '@openzeppelin=OpenZeppelin/openzeppelin-contracts@3.4.0'
 
-      
 networks:
   default: development
   development:
