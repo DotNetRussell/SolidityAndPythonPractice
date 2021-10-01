@@ -5,5 +5,7 @@ PracticeDeployAndInteractWithPython is code writen by following the Solidity, Bl
 # BrownieExamples 
 Contains code working with deploying and interacting with smart contracts via brownie. Also, using brownie to unit test contracts. 
 
+- FundMe example is just a smart contract that accepts a payment and allows withdraw to the owner
+
 # ERC20 Token
 Just deploying a basic ERC20 token so I can see what goes into it. Nothing fancy here 
