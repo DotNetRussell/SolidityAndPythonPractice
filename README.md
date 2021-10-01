@@ -9,3 +9,6 @@ Contains code working with deploying and interacting with smart contracts via br
 
 # ERC20 Token
 Just deploying a basic ERC20 token so I can see what goes into it. Nothing fancy here 
+
+# Smart Contract Lottery
+This lottery example allows users to enter a lotto, then uses a chainlink contract in order to get a random number, then the Lotto smart contract I deployed picks a winner using this random number. 
